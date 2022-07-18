@@ -1,0 +1,76 @@
+// 文本颜色
+$textc1:#ffffff;
+$textc2:#31303B;
+$textc3:#A6A6A6;
+$textc4:#D1D1D1;
+$textc5:#D6B578;
+$textc6:#D7D7D7;
+$textFFFFFF:#ffffff;
+$textBAB9A2:#BAB9A2;
+$textA1A08F:#A1A08F;
+$text409EFF:#409EFF;
+// 背景颜色
+$bg:rgba(255,255,255,0.5); //默认背景
+$bgc1:#ffffff;
+$bgc2:#31303B;
+$bgc3:#A6A6A6;
+$bgc4:#D6B578;
+$bgc5:#F3F3F3;
+$bgFFFFFF:#FFFFFF;
+$bgE9EEF3:#e9eef3;
+$bgD3DCE6:#d3dce6;
+$bg4979ff:#4979ff;
+$bgc7:#e9eef3;
+$bgc8:#d3dce6;
+
+$border409EFF:#409EFF;
+$borderc1:#eeeeee;
+$borderc2:#c1c1c1;
+$borderc3:#E4E3C6;
+$borderc4:#F5F5F5;
+
+// 安全区域适配
+//style-resources-loader配置支持，在要引入的样式下直接调用 .safe_area_inset_bottom(1rem);
+@mixin safe_area_inset_bottom($h:100px) {
+	height: calc(constant(safe-area-inset-bottom) + $h) !important;
+	height: calc(env(safe-area-inset-bottom) + $h) !important;
+	/* 兼容 IOS<11.2 */
+	padding-bottom: constant(safe-area-inset-bottom) !important;
+	/* 兼容 IOS>11.2*/
+	padding-bottom: env(safe-area-inset-bottom) !important;
+}
+
+
+@mixin show_line($num:1){
+	//当前原色不能设置padding
+	overflow: hidden;
+	height: auto;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $num;
+}
+
+
+@mixin font_size($num:12px,$height:0){
+	font-size: $num;
+	@if $height == 0{
+		line-height: $num;
+	}@else {
+		line-height: $height;
+  }
+	
+}
+
+
+@mixin com_wrap_width($type:0){
+	// width: calc(1920px - 260px - 262px);
+	// width: 1400px;
+	@if $type == 0{
+		width: 73.4%;
+	}@else {
+		width: calc(100% - 24px - 24px);
+  }
+	margin: 0 auto;
+}
